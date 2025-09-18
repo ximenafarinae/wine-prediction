@@ -1,0 +1,6 @@
+DATA_PATH = 'data/raw/wine_data.csv'
+HIDDEN_LAYER_SIZE = 12
+OUTPUT_SIZE = 1
+INPUT_SIZE = 12
+L = 0.001
+EPOCHS = 5000
