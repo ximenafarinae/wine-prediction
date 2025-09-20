@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def plot_accuracy_and_loss(train_accuracies, val_accuracies, train_losses, val_losses):
+def plot_accuracy_and_loss(train_accuracies, val_accuracies, train_losses, val_losses, title=""):
     plt.figure(figsize=(12, 5))
 
     # Precisión
@@ -10,7 +10,7 @@ def plot_accuracy_and_loss(train_accuracies, val_accuracies, train_losses, val_l
     plt.plot(val_accuracies, label='Validación')
     plt.xlabel("Épocas")
     plt.ylabel("Precisión")
-    plt.title("Precisión a lo largo de las épocas")
+    plt.title("Precisión a lo largo de las épocas" + title)
     plt.legend()
 
     # Pérdida
@@ -19,7 +19,7 @@ def plot_accuracy_and_loss(train_accuracies, val_accuracies, train_losses, val_l
     plt.plot(val_losses, label='Validación')
     plt.xlabel("Épocas")
     plt.ylabel("Pérdida")
-    plt.title("Pérdida a lo largo de las épocas")
+    plt.title("Pérdida a lo largo de las épocas" + title)
     plt.legend()
 
     plt.tight_layout()
@@ -29,13 +29,13 @@ def plot_accuracy_and_loss(train_accuracies, val_accuracies, train_losses, val_l
 def data_distribution(df):
     # Histograma con Matplotlib
     for col in df.columns:
-        plt.figure(figsize=(10, 6))
-
-        plt.hist(df[col], bins=10, edgecolor='black', alpha=0.7)
-        plt.title("Distribución de Datos (Histograma) " + col)
-        plt.xlabel("Valor")
-        plt.ylabel("Frecuencia")
-        plt.show()
+    #     plt.figure(figsize=(10, 6))
+    #
+    #     plt.hist(df[col], bins=10, edgecolor='black', alpha=0.7)
+    #     plt.title("Distribución de Datos (Histograma) " + col)
+    #     plt.xlabel("Valor")
+    #     plt.ylabel("Frecuencia")
+    #     plt.show()
 
         # Gráfico de densidad con Seaborn
         plt.figure(figsize=(10, 6))
@@ -56,6 +56,5 @@ def data_box_plot(df, columns):
         plt.title(f"Boxplot of {column}")
         plt.ylabel("Original Values")
         plt.xticks([])
-
-plt.tight_layout()
-plt.show()
+    plt.tight_layout()
+    plt.show()

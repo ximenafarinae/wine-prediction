@@ -15,12 +15,13 @@ def normalize_input(df):
     df_norm = (df - df_stats['mean']) / df_stats['std']
     return df_norm
 
-def robust_scaling(data, columns):
-    df_scaled = data.copy()
-    for column in columns:
-        median = data[column].median()
-        q1 = data[column].quantile(0.25)
-        q3 = data[column].quantile(0.75)
-        iqr = q3 - q1
-        df_scaled[column] = (data[column] - median) / iqr
-    return df_scaled
+def remove_outliers_iqr(_df, _column, factor=1.5):
+    Q1 = _df[_column].quantile(0.25)
+    Q3 = _df[_column].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower_bound = Q1 - factor * IQR
+    upper_bound = Q3 + factor * IQR
+
+    filter_df = _df[(_df[_column] >= lower_bound) & (_df[_column] <= upper_bound)]
+    return filter_df

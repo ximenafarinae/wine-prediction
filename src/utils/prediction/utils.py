@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def d_logistic(x):
     return np.exp(-x) / (1 + np.exp(-x)) ** 2
 

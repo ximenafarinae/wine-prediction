@@ -1,5 +1,3 @@
-import numpy as np
-
 from src.utils.prediction.utils import *
 
 np.random.seed(42)
@@ -9,9 +7,9 @@ class NeuralNetwork:
     def __init__(self, input_size, hidden_layer_size, output_size):
         # Construir una red neuronal con pesos y sesgos iniciados aleatoriamente
         self.w_hidden = np.random.rand(hidden_layer_size, input_size)
-        self.b_hidden = np.random.rand(hidden_layer_size, output_size)
-
         self.w_output = np.random.rand(output_size, hidden_layer_size)
+
+        self.b_hidden = np.random.rand(hidden_layer_size, output_size)
         self.b_output = np.random.rand(1, output_size)
 
     # Derivadas de las funciones de activación

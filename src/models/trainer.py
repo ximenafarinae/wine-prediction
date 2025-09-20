@@ -23,8 +23,6 @@ def train(np, model, X_train, Y_train, X_val, Y_val, epochs, l, n, m):
         train_loss = np.mean((A2 - Y_sample) ** 2)
         train_accuracy = np.mean((A2 >= 0.5) == Y_sample)
 
-        l =  0.001 / (1 + 0.0001 * epoch)
-
         # Backward propagation
         model.backward_prop(X_sample, Y_sample, Z1, A1, Z2, A2, l)
 
@@ -35,7 +33,7 @@ def train(np, model, X_train, Y_train, X_val, Y_val, epochs, l, n, m):
         val_losses.append(val_loss)
         val_accuracies.append(val_accuracy)
 
-        if epoch % 100 == 0:
+        if epoch % 500 == 0:
             print(f"Epoch {epoch}, Training Loss: {train_loss:.4f}, Training Accuracy: {train_accuracy:.4f}")
             print(f"Epoch {epoch}, Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_accuracy:.4f}")
             print("\n")
